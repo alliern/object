@@ -1,6 +1,5 @@
-class Vehicle
-
-  def initialize(input_options)
+module VehicleMod
+  def initialize
     @speed = 0
     @direction = 'north'
   end
@@ -16,39 +15,27 @@ class Vehicle
   def turn(new_direction)
     @direction = new_direction
   end
-
 end
 
-class Car < Vehicle
-
-attr_reader :fuel
-
-  def initialize(input_options)
-    super()
-    @fuel = input_options[:fuel]
-  end
+class Car
+  include VehicleMod
 
   def honk_horn
     puts "Beeeeeeep!"
   end
 end
 
+class Bike
 
-
-class Bike < Vehicle
-
-  def 
+  include VehicleMod
 
   def ring_bell
     puts "Ring ring!"
   end
 end
 
-car = Car.new(fuel: "regular")
+car = Car.new
 bike = Bike.new
 
-p car.accelerate
-p car.fuel
+p car.turn("left")
 p bike.accelerate
-car.honk_horn
-bike.ring_bell
